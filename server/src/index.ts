@@ -5,6 +5,7 @@ import { initDb } from './db/index.js';
 import routes from './routes/index.js';
 import { ClerkExpressWithAuth } from '@clerk/clerk-sdk-node';
 import { initCronJobs } from './services/cronService.js';
+import portalRoutes from './routes/portalRoutes.js';
 
 dotenv.config();
 
@@ -13,6 +14,9 @@ const PORT = process.env.PORT || 3001;
 
 app.use(cors());
 app.use(express.json());
+
+// Public Portal Routes (Bypass Auth)
+app.use('/api/portal', portalRoutes);
 
 // Clerk Authentication Middleware
 app.use(ClerkExpressWithAuth() as any);
