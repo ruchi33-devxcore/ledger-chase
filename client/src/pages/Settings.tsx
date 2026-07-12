@@ -127,7 +127,7 @@ const Settings: React.FC = () => {
                     required
                     value={formData.name}
                     onChange={e => setFormData({...formData, name: e.target.value})}
-                    placeholder="Acme Accounting Firm" 
+                    placeholder="e.g. Your Firm Name" 
                     className="w-full px-4 py-2 rounded-lg border border-slate-200 focus:border-[#48C78E] outline-none text-sm font-medium" 
                   />
                 </div>
@@ -138,7 +138,7 @@ const Settings: React.FC = () => {
                     required
                     value={formData.email}
                     onChange={e => setFormData({...formData, email: e.target.value})}
-                    placeholder="admin@acme.com" 
+                    placeholder="you@firm.com" 
                     className="w-full px-4 py-2 rounded-lg border border-slate-200 focus:border-[#48C78E] outline-none text-sm font-medium" 
                   />
                 </div>
@@ -148,7 +148,7 @@ const Settings: React.FC = () => {
                     type="text" 
                     value={formData.phone}
                     onChange={e => setFormData({...formData, phone: e.target.value})}
-                    placeholder="+91 9876543210" 
+                    placeholder="+1 555 000 0000" 
                     className="w-full px-4 py-2 rounded-lg border border-slate-200 focus:border-[#48C78E] outline-none text-sm font-medium" 
                   />
                 </div>
@@ -158,7 +158,7 @@ const Settings: React.FC = () => {
                     type="text" 
                     value={formData.website}
                     onChange={e => setFormData({...formData, website: e.target.value})}
-                    placeholder="https://acme.com" 
+                    placeholder="https://yourfirm.com" 
                     className="w-full px-4 py-2 rounded-lg border border-slate-200 focus:border-[#48C78E] outline-none text-sm font-medium" 
                   />
                 </div>
@@ -168,7 +168,7 @@ const Settings: React.FC = () => {
                     rows={3} 
                     value={formData.address}
                     onChange={e => setFormData({...formData, address: e.target.value})}
-                    placeholder="123 Business Way..."
+                    placeholder="Your office address"
                     className="w-full px-4 py-2 rounded-lg border border-slate-200 focus:border-[#48C78E] outline-none text-sm font-medium" 
                   />
                 </div>

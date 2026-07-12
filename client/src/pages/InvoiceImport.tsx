@@ -164,7 +164,7 @@ const InvoiceImport: React.FC = () => {
                   required
                   value={manualForm.client_name}
                   onChange={e => setManualForm({...manualForm, client_name: e.target.value})}
-                  placeholder="Acme Corp" 
+                  placeholder="Client name" 
                   className="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-lg outline-none focus:border-[#48C78E] text-sm" 
                 />
               </div>
