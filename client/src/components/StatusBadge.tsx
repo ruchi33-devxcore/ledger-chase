@@ -5,15 +5,17 @@ interface StatusBadgeProps {
 }
 
 const StatusBadge: React.FC<StatusBadgeProps> = ({ status }) => {
+  const s = status.toLowerCase();
+  
   const styles: Record<string, string> = {
-    Paid: 'bg-[#48C78E]/10 text-[#48C78E] border-[#48C78E]/20',
-    Overdue: 'bg-[#E53E3E]/10 text-[#E53E3E] border-[#E53E3E]/20',
-    Sent: 'bg-[#1A2B4C]/10 text-[#1A2B4C] border-[#1A2B4C]/20',
-    Pending: 'bg-[#4A5568]/10 text-[#4A5568] border-[#4A5568]/20',
+    paid: 'bg-[#00FF88]/10 text-[#00FF88] border-[#00FF88]/20',
+    overdue: 'bg-[#FF6B6B]/10 text-[#FF6B6B] border-[#FF6B6B]/20',
+    sent: 'bg-[#4488FF]/10 text-[#4488FF] border-[#4488FF]/20',
+    pending: 'bg-white/5 text-slate-400 border-white/10',
   };
 
   return (
-    <span className={`px-2.5 py-0.5 rounded-full text-xs font-bold border ${styles[status] || styles.Pending}`}>
+    <span className={`text-[10px] font-bold px-3 py-1.5 rounded-full border font-mono uppercase tracking-wider ${styles[s] || styles.pending}`}>
       {status}
     </span>
   );

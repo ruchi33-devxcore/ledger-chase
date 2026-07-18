@@ -16,37 +16,46 @@ interface InvoiceTableProps {
 
 const InvoiceTable: React.FC<InvoiceTableProps> = ({ invoices }) => {
   return (
-    <div className="overflow-hidden rounded-lg border border-slate-100 bg-white">
-      <div className="overflow-x-auto">
-        <table className="w-full text-left border-collapse">
-          <thead>
-            <tr className="bg-slate-50/50 border-b border-slate-100">
-              <th className="py-4 px-6 text-[10px] font-black text-[#1A2B4C] uppercase tracking-widest">Invoice #</th>
-              <th className="py-4 px-6 text-[10px] font-black text-[#1A2B4C] uppercase tracking-widest">Client</th>
-              <th className="py-4 px-6 text-[10px] font-black text-[#1A2B4C] uppercase tracking-widest">Amount</th>
-              <th className="py-4 px-6 text-[10px] font-black text-[#1A2B4C] uppercase tracking-widest">Due Date</th>
-              <th className="py-4 px-6 text-[10px] font-black text-[#1A2B4C] uppercase tracking-widest">Status</th>
-              <th className="py-4 px-6 text-[10px] font-black text-[#1A2B4C] uppercase tracking-widest">Next Action</th>
+    <div className="overflow-x-auto">
+      <table className="w-full">
+        <thead>
+          <tr className="border-b border-white/5">
+            <th className="text-left py-4 px-6 text-[10px] font-mono text-slate-500 uppercase tracking-widest">Invoice</th>
+            <th className="text-left py-4 px-6 text-[10px] font-mono text-slate-500 uppercase tracking-widest">Client</th>
+            <th className="text-left py-4 px-6 text-[10px] font-mono text-slate-500 uppercase tracking-widest">Amount</th>
+            <th className="text-left py-4 px-6 text-[10px] font-mono text-slate-500 uppercase tracking-widest">Due</th>
+            <th className="text-left py-4 px-6 text-[10px] font-mono text-slate-500 uppercase tracking-widest">Status</th>
+            <th className="text-left py-4 px-6 text-[10px] font-mono text-slate-500 uppercase tracking-widest">Follow-up</th>
+          </tr>
+        </thead>
+        <tbody>
+          {invoices.map((invoice) => (
+            <tr 
+              key={invoice.id} 
+              className="border-b border-white/5 hover:bg-white/[0.02] transition-colors group cursor-pointer"
+            >
+              <td className="py-4 px-6 text-sm font-mono font-bold text-white group-hover:text-[#00FF88] transition-colors">
+                {invoice.id}
+              </td>
+              <td className="py-4 px-6 text-sm text-slate-300">
+                {invoice.client}
+              </td>
+              <td className="py-4 px-6 text-sm font-mono font-bold text-white">
+                {invoice.amount}
+              </td>
+              <td className="py-4 px-6 text-sm font-mono text-slate-400">
+                {invoice.dueDate}
+              </td>
+              <td className="py-4 px-6">
+                <StatusBadge status={invoice.status} />
+              </td>
+              <td className="py-4 px-6 text-sm text-slate-500 font-mono italic">
+                {invoice.lastFollowUp || '-'}
+              </td>
             </tr>
-          </thead>
-          <tbody className="divide-y divide-slate-50">
-            {invoices.map((invoice) => (
-              <tr key={invoice.id} className="hover:bg-slate-50/50 transition-colors group">
-                <td className="py-4 px-6 text-sm font-bold text-[#1A2B4C]">{invoice.id}</td>
-                <td className="py-4 px-6 text-sm text-[#4A5568]">{invoice.client}</td>
-                <td className="py-4 px-6 text-sm text-[#1A2B4C] font-extrabold">{invoice.amount}</td>
-                <td className="py-4 px-6 text-sm text-[#4A5568]">{invoice.dueDate}</td>
-                <td className="py-4 px-6">
-                  <StatusBadge status={invoice.status} />
-                </td>
-                <td className="py-4 px-6 text-sm text-[#4A5568] font-medium">
-                  {invoice.lastFollowUp || 'No follow-up sent'}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
